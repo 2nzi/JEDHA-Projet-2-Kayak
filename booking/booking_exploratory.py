@@ -17,7 +17,7 @@ class BookingSpider(scrapy.Spider):
 
         return scrapy.FormRequest.from_response(
             response,
-            # formdata={':re:':'paris'},
+
             formdata={'ss':'paris'},
             callback=self.after_search
         )

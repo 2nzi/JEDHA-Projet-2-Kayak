@@ -3,9 +3,9 @@ import logging
 
 import scrapy
 from scrapy.crawler import CrawlerProcess
+import time
+import random
 
-import scrapy
-import scrapy
 
 class BookingSpider(scrapy.Spider):
     
@@ -22,22 +22,28 @@ class BookingSpider(scrapy.Spider):
             callback=self.after_search
         )
 
+
     def after_search(self, response):
-        # Extracting HTML content from response
         html_content = response.xpath('//div[@data-testid="property-card"]')
+        
+        yield_count = response.meta.get('yield_count', 0)
 
-        for card in html_content:
-            # Extracting review score link using XPath
+        for card in html_content:  
+            
+            if yield_count >= 13:
+                break
+            
             review_score = card.xpath('.//div[@data-testid="review-score"]/div[1]/div[1]/text()').get()
-            if review_score:
-                review_score_filter = review_score.replace("Scored", "").strip()
-                url = card.xpath('.//a/@href').get()
 
-                if float(review_score_filter) > 8.5:
-                    yield {
-                        'url': url,
-                        'review_score_link': review_score_filter,
-                    }
+            if float(review_score.replace("Scored", "").strip()) > 8.5:
+                yield {
+                    'url': response.url,
+                    'review_score_link': review_score.replace("Scored", "").strip(),
+                    'i': yield_count
+                }
+                yield_count += 1
+
+        yield scrapy.Request(response.url, callback=self.after_search, meta={'yield_count': yield_count})
 
 filename = "booking.json"
 

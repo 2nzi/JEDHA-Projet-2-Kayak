@@ -5,7 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
-
+/rotate_user_agent
 # Distribution / packaging
 .Python
 build/

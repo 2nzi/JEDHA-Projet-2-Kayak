@@ -50,7 +50,6 @@ class BookingSpider(scrapy.Spider):
     def after_search(self, response):
         # Extracting HTML content from response
         html_content = response.xpath('//div[@data-testid="property-card"]')
-
         for card in html_content:
             # Extracting review score link using XPath
             review_score = card.xpath('.//div[@data-testid="review-score"]/div[1]/div[1]/text()').get()

@@ -6,6 +6,8 @@ from scrapy.crawler import CrawlerProcess
 import time
 import random
 
+places = ['Mont-Saint-Michel', 'St-Malo', 'Bayeux', 'Le-Havre', 'Rouen', 'Paris', 'Amiens', 'Lille', 'Strasbourg', 'Chateau-du-Haut-Koenigsbourg', 'Colmar', 'Eguisheim', 'Besancon', 'Dijon', 'Annecy', 'Grenoble', 'Lyon', 'Gorges-du-Verdon', 'Bormes-les-Mimosas', 'Cassis', 'Marseille', 'Aix-en-Provence', 'Avignon', 'Uzes', 'Nimes', 'Toulouse', 'Montauban', 'Biarritz', 'Bayonne', 'La-Rochelle']
+random_city = random.choice(places) 
 
 class BookingSpider(scrapy.Spider):
     
@@ -18,7 +20,7 @@ class BookingSpider(scrapy.Spider):
         return scrapy.FormRequest.from_response(
             response,
 
-            formdata={'ss':'paris'},
+            formdata={'ss':f'{random_city}'},
             callback=self.after_search
         )
 
@@ -30,22 +32,29 @@ class BookingSpider(scrapy.Spider):
 
         for card in html_content:  
             
-            if yield_count >= 13:
-                break
+            # if yield_count >= 7:
+            #     break
             
             review_score = card.xpath('.//div[@data-testid="review-score"]/div[1]/div[1]/text()').get()
-
-            if float(review_score.replace("Scored", "").strip()) > 8.5:
+            url = card.xpath('.//a/@href').get()
+            title = card.xpath('.//div[@data-testid="title"]/text()').get()
+            if float(review_score.replace("Scored", "").strip()) >= 8:
                 yield {
-                    'url': response.url,
-                    'review_score_link': review_score.replace("Scored", "").strip(),
-                    'i': yield_count
+                    'name' : title,
+                    'url': url,
+                    'review_score': review_score.replace("Scored", "").strip(),
+                    
                 }
                 yield_count += 1
+                logging.info(str(yield_count))
 
         yield scrapy.Request(response.url, callback=self.after_search, meta={'yield_count': yield_count})
 
-filename = "booking.json"
+filename = f"{random_city}.json"
+
+
+
+
 
 if filename in os.listdir('booking/'):
         os.remove('booking/' + filename)

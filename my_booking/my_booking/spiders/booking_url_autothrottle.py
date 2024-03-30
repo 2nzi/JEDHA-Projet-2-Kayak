@@ -1,12 +1,13 @@
 import os
 import logging
-
 import scrapy
 from scrapy.crawler import CrawlerProcess
+from scrapy.utils.reactor import install_reactor
+import urllib.parse
 
 
 places = ['Mont-Saint-Michel', 'St-Malo', 'Bayeux', 'Le-Havre', 'Rouen', 'Paris', 'Amiens', 'Lille', 'Strasbourg', 'Chateau-du-Haut-Koenigsbourg', 'Colmar', 'Eguisheim', 'Besancon', 'Dijon', 'Annecy', 'Grenoble', 'Lyon', 'Gorges-du-Verdon', 'Bormes-les-Mimosas', 'Cassis', 'Marseille', 'Aix-en-Provence', 'Avignon', 'Uzes', 'Nimes', 'Toulouse', 'Montauban', 'Biarritz', 'Bayonne', 'La-Rochelle']
-places = places[:5]
+
 
 class BookingSpider(scrapy.Spider):
     
@@ -42,18 +43,16 @@ class BookingSpider(scrapy.Spider):
 
         # yield scrapy.Request(response.url, callback=self.after_search, meta={'yield_count': yield_count})
 
-# filename = f"{random_city}_url.json"
 filename = f"hotel_url.json"
-path = 'booking/result/'
 
-if filename in os.listdir(path):
-        os.remove(path + filename)
+if filename in os.listdir('.'):
+        os.remove('' + filename)
 
 process = CrawlerProcess(settings = {
     'USER_AGENT': 'Chrome/97.0',
     'LOG_LEVEL': logging.INFO,
     "FEEDS": {
-        path + filename: {"format": "json", 'encoding' : 'utf8'},
+        '' + filename: {"format": "json", 'encoding' : 'utf8'},
     }
 })
 

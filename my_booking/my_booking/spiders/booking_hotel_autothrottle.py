@@ -5,14 +5,18 @@ import scrapy
 from scrapy.crawler import CrawlerProcess
 
 import pandas as pd
-df = pd.read_json('./booking/result/hotel_url.json')
+# df = pd.read_json('./booking/result/hotel_url.json')
+df = pd.read_json('hotel_url_first_data.json')
 
 class BookingSpider(scrapy.Spider):
     
-    name = "booking"
+    name = "my_booking"
     # start_urls = ['https://www.booking.com/hotel/fr/a-l-ombre-du-mont-st-michel.en-gb.html']
-    start_urls = df['url'].tolist()
+    # start_urls = df['url'].tolist()[:3]
+    # start_urls = df['url'].tolist()[100:400]
+    start_urls = df['url'].tolist()[:]
     
+
 
     def parse(self, response):
 
@@ -39,15 +43,16 @@ class BookingSpider(scrapy.Spider):
 
 
 filename = f"hotel.json"
+# logging.info('path:' + os.getcwd())
 
-if filename in os.listdir('booking/'):
-        os.remove('booking/' + filename)
+if filename in os.listdir('.'):
+        os.remove('' + filename)
 
 process = CrawlerProcess(settings = {
     'USER_AGENT': 'Chrome/97.0',
     'LOG_LEVEL': logging.INFO,
     "FEEDS": {
-        'booking/' + filename: {"format": "json", 'encoding' : 'utf8'},
+        '' + filename: {"format": "json", 'encoding' : 'utf8'},
     }
 })
 

@@ -162,3 +162,5 @@ cython_debug/
 
 *.json
 API_key.txt
+/my_booking
+*.xlsx

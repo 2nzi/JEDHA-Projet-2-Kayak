@@ -18,10 +18,21 @@ class BookingSpider(scrapy.Spider):
         return scrapy.FormRequest.from_response(
             response,
             # formdata={':re:':'paris'},
-            formdata={'ss':'paris'},
+            formdata={'ss':'Nantes'},
             callback=self.after_search
         )
     
+    def after_search(self, response):
+        # Handle the response after search
+        # For example, you can extract data from the search results page
+        # property_cards = response.xpath('//div[@data-testid="title"]/text()')
+        property_cards = response.xpath('//div[@data-testid="title"]/text()')
+
+        for card in property_cards:
+            # Yielding the raw HTML content of each property card
+            yield {
+                'html_content': card.extract()
+            }
     # def after_search(self, response):
     #     # Handle the response after search
     #     # For example, you can extract data from the search results page
@@ -47,17 +58,17 @@ class BookingSpider(scrapy.Spider):
     #         }
 
 
-    def after_search(self, response):
-        # Extracting HTML content from response
-        html_content = response.xpath('//div[@data-testid="property-card"]')
-        for card in html_content:
-            # Extracting review score link using XPath
-            review_score = card.xpath('.//div[@data-testid="review-score"]/div[1]/div[1]/text()').get()
+    # def after_search(self, response):
+    #     # Extracting HTML content from response
+    #     html_content = response.xpath('//div[@data-testid="property-card"]')
+    #     for card in html_content:
+    #         # Extracting review score link using XPath
+    #         review_score = card.xpath('.//div[@data-testid="review-score"]/div[1]/div[1]/text()').get()
 
-            # Yielding the review score link
-            yield {
-                'review_score_link': review_score.replace("Scored", "").strip()
-            }
+    #         # Yielding the review score link
+    #         yield {
+    #             'review_score_link': review_score.replace("Scored", "").strip()
+    #         }
 
 filename = "booking.json"
 

@@ -5,17 +5,14 @@ import scrapy
 from scrapy.crawler import CrawlerProcess
 
 import pandas as pd
-# df = pd.read_json('./booking/result/hotel_url.json')
-df = pd.read_json('hotel_url_first_data.json')
+# df = pd.read_json('hotel_url_first_data.json')
+df = pd.read_json('hotel_url.json')
 
-class BookingSpider(scrapy.Spider):
+class BookingHotelSpider(scrapy.Spider):
     
-    name = "my_booking"
-    # start_urls = ['https://www.booking.com/hotel/fr/a-l-ombre-du-mont-st-michel.en-gb.html']
-    # start_urls = df['url'].tolist()[:3]
-    # start_urls = df['url'].tolist()[100:400]
     start_urls = df['url'].tolist()[:]
     
+    name = "my_booking_hotel"
 
 
     def parse(self, response):
@@ -24,18 +21,19 @@ class BookingSpider(scrapy.Spider):
         name = response.xpath('//div[@id="hp_hotel_name"]/div/h2/text()').get()
         description = response.xpath('//*[@id="property_description_content"]/div/p/text()').get()
         review_score = response.xpath('//div[@data-testid="review-score-right-component"]/div[1]/text()').get()
-        lon_lat = response.css('a#hotel_address::attr(data-atlas-latlng)').get()
+        lat_lon = response.css('a#hotel_address::attr(data-atlas-latlng)').get()
                 
         url = response.url
         city = df[df['url'] == url]['city'].iloc[0]
 
         yield {
             'city' : city,
-            'lon_lat' : lon_lat,             
+            'lat' : lat_lon.split(',')[0],             
+            'lon' : lat_lon.split(',')[1],
             'name' : name,
             'review_score' : review_score,
             'url' : response.url,
-            'description': description.replace("\n", ""),
+            'description': description.replace("\n", "<br>"),
         }
 
 
@@ -43,7 +41,6 @@ class BookingSpider(scrapy.Spider):
 
 
 filename = f"hotel.json"
-# logging.info('path:' + os.getcwd())
 
 if filename in os.listdir('.'):
         os.remove('' + filename)
@@ -56,5 +53,5 @@ process = CrawlerProcess(settings = {
     }
 })
 
-process.crawl(BookingSpider)
+process.crawl(BookingHotelSpider)
 process.start()

@@ -5,8 +5,10 @@ import scrapy
 from scrapy.crawler import CrawlerProcess
 
 import pandas as pd
+data_path =  r'C:\Users\antoi\\Documents\\Work&Learn\\JEDHA\\M03-DataCollection_Managment\\JEDHA-Projet-2-Kayak\\datas\\'
+
 # df = pd.read_json('hotel_url_first_data.json')
-df = pd.read_json('hotel_url.json')
+df = pd.read_json(data_path+'hotel_url.json')
 
 class BookingHotelSpider(scrapy.Spider):
     
@@ -40,16 +42,17 @@ class BookingHotelSpider(scrapy.Spider):
 
 
 
+save_path =  r'C:\Users\antoi\\Documents\\Work&Learn\\JEDHA\\M03-DataCollection_Managment\\JEDHA-Projet-2-Kayak\\datas\\'
 filename = f"hotel.json"
 
-if filename in os.listdir('.'):
-        os.remove('' + filename)
+if filename in os.listdir(save_path):
+        os.remove(save_path + filename)
 
 process = CrawlerProcess(settings = {
     'USER_AGENT': 'Chrome/97.0',
     'LOG_LEVEL': logging.INFO,
     "FEEDS": {
-        '' + filename: {"format": "json", 'encoding' : 'utf8'},
+        save_path + filename: {"format": "json", 'encoding' : 'utf8'},
     }
 })
 

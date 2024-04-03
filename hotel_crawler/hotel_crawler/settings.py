@@ -1,13 +1,17 @@
+# Scrapy settings for hotel_crawler project
+#
+# For simplicity, this file contains only settings considered important or
+# commonly used. You can find more settings consulting the documentation:
+#
+#     https://docs.scrapy.org/en/latest/topics/settings.html
+#     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
+#     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+BOT_NAME = "hotel_crawler"
 
-# Paramètres Scrapy pour le projet my_booking
+SPIDER_MODULES = ["hotel_crawler.spiders"]
+NEWSPIDER_MODULE = "hotel_crawler.spiders"
 
-# Définissez le nom de votre projet Scrapy
-BOT_NAME = "my_booking"
-
-# Définissez les modules où se trouvent vos spiders
-SPIDER_MODULES = ["my_booking.spiders"]
-NEWSPIDER_MODULE = "my_booking.spiders"
 
 # Respectez les règles de robots.txt
 ROBOTSTXT_OBEY = True

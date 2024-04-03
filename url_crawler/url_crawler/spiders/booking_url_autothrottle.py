@@ -4,13 +4,18 @@ import scrapy
 from scrapy.crawler import CrawlerProcess
 import pandas as pd
 
-chemin_fichier_csv = "./city.csv"
+data_path =  r'C:\Users\antoi\\Documents\\Work&Learn\\JEDHA\\M03-DataCollection_Managment\\JEDHA-Projet-2-Kayak\\datas\\'
+filename = f"hotel_url.json"
+chemin_fichier_csv = data_path+"./city.csv"
 df = pd.read_csv(chemin_fichier_csv, header=None, names=['city','nan'])
 places = df['city'].str.replace(' ', '-').tolist()
 
+
+
+
 class BookingUrlSpider(scrapy.Spider):
     
-    name = "my_booking"
+    name = "my_booking_url"
 
     nb_hotel = 25
     order = 'review_score_and_price'
@@ -31,16 +36,16 @@ class BookingUrlSpider(scrapy.Spider):
             }
 
 
-filename = f"hotel_url.json"
 
-if filename in os.listdir('.'):
-        os.remove('' + filename)
+
+if filename in os.listdir(data_path):
+        os.remove(data_path + filename)
 
 process = CrawlerProcess(settings = {
     'USER_AGENT': 'Chrome/97.0',
     'LOG_LEVEL': logging.INFO,
     "FEEDS": {
-        '' + filename: {"format": "json", 'encoding' : 'utf8'},
+        data_path + filename: {"format": "json", 'encoding' : 'utf8'},
     }
 })
 

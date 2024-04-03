@@ -1,3 +1,5 @@
 path:
   project_path: 'C:\Users\antoi\\Documents\\Work&Learn\\JEDHA\\M03-DataCollection_Managment\\JEDHA-Projet-2-Kayak\\'
-  save_data_path: 'C:\Users\antoi\\Documents\\Work&Learn\\JEDHA\\M03-DataCollection_Managment\\JEDHA-Projet-2-Kayak\\results\\'
+  save_data_path: 'C:\Users\antoi\\Documents\\Work&Learn\\JEDHA\\M03-DataCollection_Managment\\JEDHA-Projet-2-Kayak\\datas\\'
+  scrapy_hotel_path: 'C:\Users\antoi\\Documents\\Work&Learn\\JEDHA\\M03-DataCollection_Managment\\JEDHA-Projet-2-Kayak\\hotel_crawler\\hotel_crawler\\'
+  scrapy_url_path: 'C:\Users\antoi\\Documents\\Work&Learn\\JEDHA\\M03-DataCollection_Managment\\JEDHA-Projet-2-Kayak\\url_crawler\\url_crawler\\'

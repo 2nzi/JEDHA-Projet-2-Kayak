@@ -20,4 +20,74 @@ L'équipe marketing de Kayak souhaite développer une application qui aide les u
    - **Top 20 des Hôtels**: Présentation des vingt meilleurs hôtels de la région en fonction de la disponibilité, des évaluations des utilisateurs et d'autres facteurs pertinents.
 
 
-## Utilisation
+## Structure
+
+JEDHA-Projet-2-Kayak/
+│
+├── .gitignore
+├── API_city_weather.ipynb
+├── API_key.txt
+├── config.py
+├── config.yaml
+├── DataLake_ETL.ipynb
+├── main.ipynb
+├── main_scrap.py
+├── planning_projet.xlsx
+├── README.md
+├── .git/
+│   ├── (Git-related files and directories)
+│
+├── DataLake_DataWarehouse_screen/
+│   ├── (Image files)
+│
+├── datas/
+│   ├── city.csv
+│   ├── Data_Enriched_Weather_Hotel_French_Cities.csv
+│   └── hotel_saved.json
+│
+├── hotel_crawler/
+│   ├── (Scrapy project for hotel crawling)
+│
+├── url_crawler/
+│   ├── (Scrapy project for URL crawling)
+│
+└── __pycache__/
+    ├── (Cached Python bytecode files)
+
+
+
+### Guide d'Utilisation 
+
+**Prérequis:**
+- Python doit être installé sur votre système.
+- Assurez-vous d'avoir une connexion Internet.
+
+**Étapes:**
+
+1. **Configuration de l'Environnement:**
+   - Exécutez `pip install -r requirements.txt` pour installer les bibliothèques nécessaires.
+
+2. **Clés d'API:**
+   - Obtenez les clés d'API pour l'accès aux données météorologiques et aux données de villes.
+     - [Données météorologiques](https://api.openweathermap.org/data/2.5/forecast?)
+     - [Données de villes](https://nominatim.openstreetmap.org/search)
+
+3. **Exécution des Scripts:**
+   - Utilisez `API_city_weather.ipynb` pour accéder aux données météorologiques.
+   - Lancez `main_scrap.py` pour le web scraping des données sur les URL et les hôtels.
+   - Utilisez `main.ipynb` pour accéder aux résultats des deux scripts précédents.
+
+4. **ETL:**
+   - Utilisez `DataLake_ETL.ipynb` pour effectuer les opérations d'Extraction, Transformation et Chargement.
+
+5. **Gestion des Données:**
+   - Les données sont stockées dans le dossier `datas/`.
+   - Utilisez `config.py` pour définir des chemins relatifs plus robustes pour la gestion des données.
+
+
+
+## Result
+
+
+
+## Go Further

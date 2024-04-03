@@ -19,7 +19,6 @@ L'équipe marketing de Kayak souhaite développer une application qui aide les u
    - **Top 5 des Destinations**: Affichage des cinq meilleures destinations recommandées en fonction des préférences des utilisateurs et de l'analyse des données.
    - **Top 20 des Hôtels**: Présentation des vingt meilleurs hôtels de la région en fonction de la disponibilité, des évaluations des utilisateurs et d'autres facteurs pertinents.
 
-
 ## Structure
 
 JEDHA-Projet-2-Kayak/

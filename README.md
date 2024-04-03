@@ -65,8 +65,8 @@ JEDHA-Projet-2-Kayak/
 
 2. **Clés d'API:**
    - Obtenez les clés d'API pour l'accès aux données météorologiques et aux données de villes.
-     - [Données météorologiques](https://api.openweathermap.org/data/2.5/forecast?)
-     - [Données de villes](https://nominatim.openstreetmap.org/search)
+     - [Données météorologiques](https://api.openweathermap.org)
+     - [Données de villes](https://nominatim.openstreetmap.org)
 
 3. **Exécution des Scripts:**
    - Utilisez `API_city_weather.ipynb` pour accéder aux données météorologiques.

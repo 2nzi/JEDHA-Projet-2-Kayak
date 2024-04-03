@@ -20,67 +20,36 @@ L'équipe marketing de Kayak souhaite développer une application qui aide les u
    - **Top 20 des Hôtels**: Présentation des vingt meilleurs hôtels de la région en fonction de la disponibilité, des évaluations des utilisateurs et d'autres facteurs pertinents.
 
 ## Structure
-
+```
 JEDHA-Projet-2-Kayak/ 
-
+│ 
 ├── .gitignore 
-
 ├── API_city_weather.ipynb 
-
 ├── API_key.txt 
-
 ├── config.py 
-
 ├── config.yaml 
-
 ├── DataLake_ETL.ipynb 
-
 ├── main.ipynb 
-
 ├── main_scrap.py 
-
 ├── planning_projet.xlsx 
-
 ├── README.md 
-
 ├── .git/ 
-
 │   ├── (Git-related files and directories) 
-
 │ 
-
 ├── DataLake_DataWarehouse_screen/ 
-
 │   ├── (Image files) 
-
 │ 
-
 ├── datas/ 
-
 │   ├── city.csv 
-
 │   ├── Data_Enriched_Weather_Hotel_French_Cities.csv 
-
 │   └── hotel_saved.json 
-
 │ 
-
 ├── hotel_crawler/ 
-
 │   ├── (Scrapy project for hotel crawling) 
-
 │ 
-
-├── url_crawler/ 
-
-│   ├── (Scrapy project for URL crawling) 
-
-│ 
-
-└── __pycache__/ 
-
-    ├── (Cached Python bytecode files)
-
+└── url_crawler/ 
+    ├── (Scrapy project for URL crawling) 
+```
 
 
 ### Guide d'Utilisation 

@@ -1,0 +1,9 @@
+pandas
+plotly
+pathlib
+config
+Boto3
+psycopg2-binary
+sqlalchemy==2.0.0
+pydantic
+scrapy

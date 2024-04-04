@@ -1,21 +1,19 @@
 import os
 import logging
-
 import scrapy
 from scrapy.crawler import CrawlerProcess
-
 import pandas as pd
-data_path =  r'C:\Users\antoi\\Documents\\Work&Learn\\JEDHA\\M03-DataCollection_Managment\\JEDHA-Projet-2-Kayak\\datas\\'
+# from ....config import AllPath
+# all_paths = AllPath()
+# save_data_path = all_paths.save_data_path
+save_data_path = 'C:\\Users\\antoi\\Documents\\Work&Learn\\JEDHA\\M03-DataCollection_Managment\\JEDHA-Projet-2-Kayak\\datas\\'
 
-# df = pd.read_json('hotel_url_first_data.json')
-df = pd.read_json(data_path+'hotel_url.json')
+df = pd.read_json(save_data_path+'hotel_url.json')
 
 class BookingHotelSpider(scrapy.Spider):
     
     start_urls = df['url'].tolist()[:]
-    
     name = "my_booking_hotel"
-
 
     def parse(self, response):
 
@@ -42,17 +40,16 @@ class BookingHotelSpider(scrapy.Spider):
 
 
 
-save_path =  r'C:\Users\antoi\\Documents\\Work&Learn\\JEDHA\\M03-DataCollection_Managment\\JEDHA-Projet-2-Kayak\\datas\\'
 filename = f"hotel.json"
 
-if filename in os.listdir(save_path):
-        os.remove(save_path + filename)
+if filename in os.listdir(save_data_path):
+        os.remove(save_data_path + filename)
 
 process = CrawlerProcess(settings = {
     'USER_AGENT': 'Chrome/97.0',
     'LOG_LEVEL': logging.INFO,
     "FEEDS": {
-        save_path + filename: {"format": "json", 'encoding' : 'utf8'},
+        save_data_path + filename: {"format": "json", 'encoding' : 'utf8'},
     }
 })
 

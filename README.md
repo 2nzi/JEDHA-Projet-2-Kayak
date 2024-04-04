@@ -82,8 +82,19 @@ JEDHA-Projet-2-Kayak/
 
 
 
-## Result
+## Resultats
+<div style="text-align: left;">
+  <img src="Result_screen/TOP5.png" style="width:400px; margin-right:30px;" />
+  <img src="Result_screen/hotels.png" style="width:400px;" />
+  <img src="Result_screen/City_hotels.png" style="width:400px;" />
+  <img src="Result_screen/bayonne.png" style="width:400px;" />
+  <img src="Result_screen/hover.png" style="width:400px;" />
+</div>
 
 
+## Aller plus loin
 
-## Go Further
+Le projet peut être rendu plus configurable en termes de :
+- Type de voyage : nombre de jours de voyage, nombre de personnes, destinations spécifiques choisie par l'utilisateur.
+- Préférences météorologiques : préférence pour la pluie, température minimale/maximale, vent fort.
+- Préférences d'hébergement : nombre de chambres, note minimale dans une catégorie, équipements spécifiques.

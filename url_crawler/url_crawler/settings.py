@@ -10,7 +10,6 @@ ROBOTSTXT_OBEY = True
 
 
 # Respectez les règles de robots.txt
-ROBOTSTXT_OBEY = True
 
 # Configurez le nombre maximal de requêtes concurrentes effectuées par Scrapy
 # Ajustez en fonction des capacités de votre système et de la capacité du serveur du site cible

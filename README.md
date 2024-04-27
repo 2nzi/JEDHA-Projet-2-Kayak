@@ -85,7 +85,7 @@ JEDHA-Projet-2-Kayak/
 ## Resultats
 <div style="text-align: left;">
   <img src="Result_screen/TOP5.png" style="width:400px; margin-right:30px;" />
-  <img src="Result_screen/hotels.png" style="width:400px;" />
+  <img src="Result_screen/Hotels.png" style="width:400px;" />
   <img src="Result_screen/City_hotels.png" style="width:400px;" />
   <img src="Result_screen/bayonne.png" style="width:400px;" />
   <img src="Result_screen/hover.png" style="width:400px;" />
